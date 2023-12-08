@@ -20,8 +20,12 @@ public class Order {
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
 
-    @OneToMany(mappedBy = "ITEM_ID")
-    private List<OrderItem> orderItems = new ArrayList<>();
+//    @OneToMany(mappedBy = "ITEM_ID")
+//    private List<OrderItem> orderItems = new ArrayList<>();
+
+    @OneToOne
+    @JoinColumn(name = "DELIVERY_ID")
+    private Delivery delivery;
 
     public Member getMember() {
         return member;
@@ -32,14 +36,14 @@ public class Order {
     }
 
     private LocalDateTime orderDate;
-//    @Enumerated(EnumType.STRING)
-//    private OrderStatus status;
+    @Enumerated(EnumType.STRING)
+    private OrderStatus status;
 
 
-    public void addOrderItem(OrderItem orderItem) { // 연관관계 편의 메서드
-        orderItems.add(orderItem);
-        orderItem.setOrder(this);
-    }
+//    public void addOrderItem(OrderItem orderItem) { // 연관관계 편의 메서드
+//        orderItems.add(orderItem);
+//        orderItem.setOrder(this);
+//    }
     public Long getId() {
         return Id;
     }
