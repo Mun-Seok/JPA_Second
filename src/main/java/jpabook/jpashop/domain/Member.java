@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Member {
+public class Member extends BaseEntity{
     @Id
     @GeneratedValue
     @Column(name = "MEMBER_ID")
@@ -25,11 +25,10 @@ public class Member {
     private String street;
     private String zipcode;
 
-    @OneToMany(mappedBy = "MEMBER_ID")
+    @OneToMany(mappedBy = "member")
     private List<Order> orders = new ArrayList<>(); // 관례상 ArrayList 많이 사용, 데이터 없이 nullPointException 생기는 등 좋음
 
     public Long getId() {
-
         return id;
     }
 

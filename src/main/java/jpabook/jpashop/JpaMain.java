@@ -1,9 +1,6 @@
 package jpabook.jpashop;
 
-import jpabook.jpashop.domain.Member;
-import jpabook.jpashop.domain.Order;
-import jpabook.jpashop.domain.OrderItem;
-import jpabook.jpashop.domain.Team;
+import jpabook.jpashop.domain.*;
 //import jpabook.jpashop.domain.Order;
 
 import javax.persistence.*;
@@ -100,9 +97,9 @@ public class JpaMain {
                 */
 
                 // 팀 저장
-                Team team = new Team();
-                team.setName("TeamA");
-                em.persist(team);
+//                Team team = new Team();
+//                team.setName("TeamA");
+//                em.persist(team);
 
 /*
                 // 회원 저장
@@ -134,15 +131,20 @@ public class JpaMain {
                 System.out.println("======");
 */
 
-                // 양방 연관관계 아니여도 상관은 X
+/*                // 양방 연관관계 아니여도 상관은 X
                 Order order = new Order();
                 em.persist(order);
 
                 OrderItem orderItem = new OrderItem();
                 orderItem.setOrder(order);
 
-                em.persist(orderItem);
+                em.persist(orderItem);*/
 
+                Book book = new Book();
+                book.setName("JPA");
+                book.setAuthor("김영한");
+
+                em.persist(book);
 
                 tx.commit();
             }catch(Exception e){
