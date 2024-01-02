@@ -21,9 +21,12 @@ public class Member extends BaseEntity{
 //    private Team team; // 객체 지향 모델링
 
     private String name;
-    private String city;
-    private String street;
-    private String zipcode;
+//    private String city;
+//    private String street;
+//    private String zipcode;
+
+    @Embedded
+    private Address address;
 
     @OneToMany(mappedBy = "member")
     private List<Order> orders = new ArrayList<>(); // 관례상 ArrayList 많이 사용, 데이터 없이 nullPointException 생기는 등 좋음
@@ -85,27 +88,32 @@ public class Member extends BaseEntity{
     }
 
 
-    public String getCity() {
-        return city;
-    }
+//    public String getCity() {
+//        return city;
+//    }
+//
+//    public void setCity(String city) {
+//        this.city = city;
+//    }
+//
+//    public String getStreet() {
+//        return street;
+//    }
+//
+//    public void setStreet(String street) {
+//        this.street = street;
+//    }
+//
+//    public String getZipcode() {
+//        return zipcode;
+//    }
+//
+//    public void setZipcode(String zipcode) {
+//        this.zipcode = zipcode;
+//    }
 
-    public void setCity(String city) {
-        this.city = city;
-    }
 
-    public String getStreet() {
-        return street;
-    }
-
-    public void setStreet(String street) {
-        this.street = street;
-    }
-
-    public String getZipcode() {
-        return zipcode;
-    }
-
-    public void setZipcode(String zipcode) {
-        this.zipcode = zipcode;
+    public Address getAddress() {
+        return address;
     }
 }
